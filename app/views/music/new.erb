@@ -1,19 +1,29 @@
-<h1>Post a Song</h1>
-<hr/>
+<h1>Add a Song</h1>
 
-<form>
+<% if @musics && @musics.errors.any? %>
   <div>
-    <label>Title:</label>
-    <input type="text" name="title">
+    <strong>Sorry, some errors occured with your submission:</strong>
+    <ul>
+      <% @musics.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form method="post" action="/music">
+  <div>
+    <label>Song Title:</label>
+    <input type="text" name="song_title" value="<%= @musics && @musics.song_title %>">
   </div>
 
   <div>
     <label>Author:</label>
-    <input type="text" name="author">
+    <input type="text" name="author" value="<%= @musics && @musics.author %>">
  </div>
 
   <div>
-    <label>URL:</label>
+    <label>URL (optional):</label>
     <input type="text" name="url">
   </div>
 

@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160125193823) do
 
-  create_table "music", force: :cascade do |t|
+  create_table "musics", force: :cascade do |t|
     t.string   "song_title"
     t.string   "author"
     t.string   "url"
