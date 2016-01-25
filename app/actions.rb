@@ -4,5 +4,10 @@ get '/' do
 end
 
  get '/music' do
+  @music = Music.all
     erb :'music/index'
+end
+
+get '/music/new' do
+  erb :'music/new'
 end

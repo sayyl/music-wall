@@ -1,3 +1,14 @@
  <h1>All Music</h1>
 
  
+<% @music.each do |m| %>
+  <div class="music">
+    <h3><%= music.title %> <small>(by: <%= music.author %>)</small></h3>
+    <p>
+      <%= music.url %>
+    </p>
+  </div>
+<% end %>
+
+<hr/>
+<a href="/music/new">Add in a new song to the list!</a>
