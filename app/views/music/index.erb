@@ -3,7 +3,7 @@
  
 <% @musics.each do |music| %>
   <div class="music">
-    <h3><%= music.song_title %> <small>(by: <%= music.author %>)</small></h3>
+    <h2><%= music.song_title %> <small>(by: <%= music.author %>)</small></h2>
     <p>
       <a href="<%= music.url %>"><%= music.url %></a>
     </p>
