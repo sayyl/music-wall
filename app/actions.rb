@@ -1,12 +1,13 @@
 helpers do
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+#    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    User.find { |u| u[:id] == session[:user_id] } if session[:user_id]
   end
 end
 
 # Homepage (Root path)
 get '/' do
-  @user_id = session[:user_id]
+  session[:user_id]
   erb :index
 end
 
@@ -57,23 +58,12 @@ post '/sign_up' do
   end
 end
 
-get '/log_in' do
-  @user = User.all
-  erb :'log_in'
-end
-
 post '/log_in' do
-  @user = User.find( 
-    email: params[:email], 
-    password: params[:password]
-    )
-
-  if @user
-    session[:user_id] = @user.id
-    redirect '/'
-  else
-    erb :'log_in'
+  user = User.find { |u| u[:username] == params[:username] }
+  if user && user[:password] == params[:password]
+    session[:user_id] = user[:id] 
   end
+  redirect '/'
 end
 
 get '/log_out' do
@@ -82,13 +72,5 @@ get '/log_out' do
   redirect '/'
 end
 
-
-# post '/log_in' do
-#   @user = User.find { |u| u[:username] == params[:username]}
-#   if @user && @user[:password] == params[:password]
-#     session[:user_id] = @user[:id]
-#   end
-#   redirect '/'
-# end
 
 

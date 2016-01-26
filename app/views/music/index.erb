@@ -10,5 +10,16 @@
   </div>
 <% end %>
 
-<hr/>
-<a href="/music/new">Add a new song to the list!</a>
+<% if current_user %>
+  <hr/>
+  <a href="/music/new">Add a new song to the list!</a>
+<% else %>
+  <hr/>
+
+  <p>Log in to add your own songs! <br></p>
+  <p>
+    <a class="btn btn-primary" href="/sign_up" role="button">Sign Up</a>
+    <a class="btn btn-primary" href="/" role="button">Log In</a>
+  </p>
+
+<% end %>
