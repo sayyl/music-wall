@@ -1,6 +1,7 @@
 class AddMusic < ActiveRecord::Migration
   def change
     create_table :musics do |t|
+      t.references :user
       t.string :song_title
       t.string :author
       t.string :url

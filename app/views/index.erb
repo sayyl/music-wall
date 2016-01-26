@@ -1,3 +1,12 @@
 <h1>Home Page</h1>
 
-<a class="btn btn-default" href="/music/new" role="button">Add a new song to the list!</a>
+
+<% if current_user %>
+
+  <a class="btn btn-default" href="/music/new" role="button">Add a new song to the list!</a>
+  <a class="btn btn-default" href="/log_out" role="button">Log Out</a>
+
+<% else %>
+  <a class="btn btn-default" href="/log_in" role="button">Log In</a>
+
+<% end %>

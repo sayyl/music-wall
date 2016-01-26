@@ -1,4 +1,5 @@
 <h1>Add a Song</h1>
+<hr/>
 
 <% if @musics && @musics.errors.any? %>
   <div>
@@ -14,24 +15,28 @@
 
 <form class="form-horizontal" method="post" action="/music">
   <div class="col-xs-8">
-    <label for="SongTitle">Song Title:</label>
-    <input type="text" class="form-control" id="SongTitle" placeholder="Song Title">
+    <label for="song_title">Song Title:</label>
+    <input type="text" class="form-control" name="song_title" id="song_title" placeholder="Song Title">
 <!--     <input type="text" name="song_title" value="<%= @musics && @musics.song_title %>"> -->
   </div>
 
   <div class="col-xs-8">
-    <label for="Author">Author:</label>
-    <input type="text" class="form-control" id="Author" placeholder="Author">
+    <label for="author">Author:</label>
+    <input type="text" class="form-control" name="author" id="author" placeholder="Author">
  </div>
 
+
   <div class="col-xs-8">
-    <label for="URL">URL (optional):</label>
-    <input type="text" class="form-control" id="URL" placeholder="URL">
+    <label for="url">URL (optional):</label>
+    <input type="text" class="form-control" name="url" id="url" placeholder="URL">
+  <hr/>
   </div>
-  
+
   <div class="col-sm-10">
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
   
 
 </form>
+
+<!-- ### keep name="..." attribute or else your code doesn't work anymore! -->
